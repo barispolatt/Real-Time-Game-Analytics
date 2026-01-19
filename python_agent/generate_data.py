@@ -1,11 +1,17 @@
 import time
 import json
 import random
+import os
 import requests
 from faker import Faker
+from dotenv import load_dotenv
 
 # Configurations
-SERVER_IP = "YOUR_SERVER_IP" 
+SERVER_IP = os.getenv("SERVER_IP")
+if not SERVER_IP:
+    print(".env file can not found or SERVER_IP is not defined!")
+    exit(1)
+
 LOGSTASH_URL = f"http://{SERVER_IP}:5044"
 
 fake = Faker()
